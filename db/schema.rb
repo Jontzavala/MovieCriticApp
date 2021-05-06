@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_164131) do
+ActiveRecord::Schema.define(version: 2021_05_06_000401) do
 
   create_table "critics", force: :cascade do |t|
     t.string "username"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2021_05_05_164131) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
   create_table "movies", force: :cascade do |t|

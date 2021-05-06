@@ -4,6 +4,10 @@ class CriticsController < ApplicationController
         @critic = Critic.new
     end
 
+    def index
+        
+    end
+
     def create
         @critic = Critic.new(critic_params)
         if @critic.save
@@ -15,6 +19,9 @@ class CriticsController < ApplicationController
     end
 
     def show
+        redirect_if_not_logged_in
+        @critic = Critic.find_by_id(params[:id])
+        redirect_to '/' if !@critic
     end
 
     private

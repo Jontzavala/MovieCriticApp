@@ -1,0 +1,11 @@
+<% if @movie %>
+  <h1>Reviews for <%= @movie.title%></h1>
+<% else %>
+  <h1>All Reviews</h1>
+<% end %>
+
+<ul>
+<% @reviews.each do |r|%>
+  <li><%= r.critic.username%> says "<%= r.content%>" about this movie: <strong><%= link_to r.movie.title, movie_path(r.movie_id) %></strong></li>
+<% end %>
+</ul>
