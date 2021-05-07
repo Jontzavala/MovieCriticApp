@@ -17,10 +17,8 @@
       <%= link_to "Add a Movie", new_movie_path %> |
       <%= link_to "Add a Review", new_review_path %> |
       <%= link_to "All Movies", movies_path %> |
+      <%= link_to "My Movies", critic_movies_path(current_critic) %> |
       <%= link_to "Logout", logout_path, method:"delete" %>
-      <% else %>
-      <%= link_to "Become a Critic", signup_path %> |
-      <%= link_to "Login", login_path %>
       <% end %>
 
     </div>

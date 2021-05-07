@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :set_movie, only: [:show, :edit, :update]
+    before_action :redirect_if_not_movie_author, only: [:edit, :update]
 
     def new
         @movie = Movie.new
@@ -10,7 +12,7 @@ class MoviesController < ApplicationController
            @movies = @critic.movies.alpha
         else
           @error = "That Critic doesn't exist" if params[:critic_id]
-          @movies = Movie.includes(:critic)
+          @movies = Movie.alpha
         end
     
         #@posts = @posts.search(params[:q].downcase) if params[:q] && !params[:q].empty?
@@ -27,9 +29,20 @@ class MoviesController < ApplicationController
         end
     end
 
+    def edit
+        
+    end
+
+    def update
+       if @movie.update(movie_params)
+         redirect_to movie_path(@movie)
+       else
+         render :edit
+       end
+    end
+
     def show
-        @movie = Movie.find_by_id(params[:id])
-        redirect_to movies_path if !@movie
+        
     end
 
     private
@@ -37,4 +50,17 @@ class MoviesController < ApplicationController
     def movie_params
         params.require(:movie).permit(:title, :description)
     end
+
+    def set_movie
+        @movie = Movie.find_by_id(params[:id])
+        if !@movie
+            flash[:message] = "Movie was not found"
+            redirect_to movies_path
+        end
+    end
+
+    def redirect_if_not_movie_author
+        redirect_to movies_path if @movie.critic != current_critic
+    end
+
 end

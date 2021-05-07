@@ -1,0 +1,17 @@
+<h1>Edit <%= @movie.title%>!</h1>
+
+<%= render partial: "layouts/errors", locals: {object: @movie} %>
+
+<%= form_for(@movie) do |f|%>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  </br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+
+  <%= f.submit %>
+
+<% end %>

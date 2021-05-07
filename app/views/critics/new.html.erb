@@ -1,5 +1,8 @@
 <h1>Sign Up</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @critic} %>
+
+
 <%= form_for(@critic, url:'/signup') do |f| %>
 
     <%= f.label :username %>

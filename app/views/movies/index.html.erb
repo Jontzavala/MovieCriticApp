@@ -1,7 +1,21 @@
-<h1>All Movies</h1>
+<% if @critic %>
+    <h1><%= @critic.username %>'s Movies:</h1>
+<% else %>
+    <h1>All Movies</h1>
+<% end %>
+
+<% if @movies.blank? %>
+
+    <h2>No movies yet. Add a movie <%= link_to "here", new_movie_path%></h2>
+
+<% else %>
+
 
 <ul>
     <% @movies.each do |m|%>
       <li><%= link_to m.title, movie_path(m) %> - <%= m.critic.username%> </li>
     <% end %>
 </ul>
+
+<% end %>
+
