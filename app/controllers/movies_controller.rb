@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
     before_action :redirect_if_not_logged_in
-    before_action :set_movie, only: [:show, :edit, :update]
-    before_action :redirect_if_not_movie_author, only: [:edit, :update]
+    before_action :set_movie, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_movie_author, only: [:edit, :update, :destroy]
 
     def new
         @movie = Movie.new
@@ -15,9 +15,6 @@ class MoviesController < ApplicationController
           @movies = Movie.alpha
         end
     
-        #@posts = @posts.search(params[:q].downcase) if params[:q] && !params[:q].empty?
-        #@posts = @posts.filter(params[:post][:category_id]) if params[:post] && params[:post][:category_id] != ""
-    
     end
 
     def create
@@ -27,6 +24,10 @@ class MoviesController < ApplicationController
         else
             render :new
         end
+    end
+
+    def show
+        
     end
 
     def edit
@@ -41,9 +42,16 @@ class MoviesController < ApplicationController
        end
     end
 
-    def show
-        
+    def destroy
+        if @movie = Movie.find_by_id(params[:id])
+            @movie.destroy
+            redirect_to movies_path
+        else
+            flash[:message] = "Couldn't delete movie"
+            render :edit
+        end
     end
+
 
     private
 

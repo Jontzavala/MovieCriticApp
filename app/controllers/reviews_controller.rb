@@ -1,13 +1,12 @@
 class ReviewsController < ApplicationController
     before_action :redirect_if_not_logged_in
-    before_action :set_review, only: [:show, :edit, :update]
-    before_action :redirect_if_not_review_author, only: [:edit, :update]
+    before_action :set_review, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_review_author, only: [:edit, :update, :destroy]
  
    def index
-        if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
-            @reviews = @movie.reviews
+        if params[:critic_id] && @critic = Critic.find_by_id(params[:critic_id])
+            @reviews = @critic.reviews
         else
-            @error = "We don't seem to have that movie" if params[:movie_id]
             @reviews = Review.all
         end
     end
@@ -45,6 +44,16 @@ class ReviewsController < ApplicationController
        render :edit
      end
    end
+
+   def destroy
+        if @review = Review.find_by_id(params[:id])
+            @review.destroy
+            redirect_to reviews_path
+        else
+            flash[:message] = "Couldn't delete review"
+            render :edit
+        end
+    end
  
    private
  

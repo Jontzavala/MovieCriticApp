@@ -4,6 +4,7 @@
 
 <% if @movie.critic == current_critic %>
 <h4><%= link_to "Edit Movie", edit_movie_path(@movie)%></h4>
+<h4><%= link_to "Delete Movie", @movie, :method => :delete%></h4>
 <% end %>
 
 <div><%= @movie.description %></div>

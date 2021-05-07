@@ -2,6 +2,7 @@
 
 <% if @review.critic == current_critic %>
   <%= link_to "Edit Review", edit_review_path(@review)%>
+  <%= link_to "Delete Review", @review, :method => :delete%>
 <% end %>
 
 <h4>See the movie here: <%= link_to @review.movie.title, movie_path(@review.movie_id) %></h4>
