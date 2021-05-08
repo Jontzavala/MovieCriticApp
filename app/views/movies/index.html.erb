@@ -13,7 +13,7 @@
 
 <ul>
     <% @movies.each do |m|%>
-      <li><%= link_to m.title, movie_path(m) %> - <%= m.critic.username%> </li>
+      <li><%= link_to m.title, movie_path(m) %></li>
     <% end %>
 </ul>
 
