@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :critics do
     resources :movies, shallow: true
     resources :reviews, shallow: true
+    resources :image_elements
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
