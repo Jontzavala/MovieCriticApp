@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
-  delete '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   resources :critics do
     resources :movies, shallow: true
     resources :reviews, shallow: true
-    resources :image_elements
   end
   
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

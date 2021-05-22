@@ -27,6 +27,7 @@ class MoviesController < ApplicationController
     end
 
     def show
+        #@image_element = @movie.image_elements.build
         
     end
 
@@ -56,7 +57,7 @@ class MoviesController < ApplicationController
     private
 
     def movie_params
-        params.require(:movie).permit(:title, :description)
+        params.require(:movie).permit(:title, :description, :image)
     end
 
     def set_movie

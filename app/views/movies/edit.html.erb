@@ -1,3 +1,6 @@
+<%= image_tag @movie.image.variant(resize: "400x400") %>
+
+
 <h1>Edit <%= @movie.title%>!</h1>
 
 <%= render partial: "layouts/errors", locals: {object: @movie} %>

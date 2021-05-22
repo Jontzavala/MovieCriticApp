@@ -1,4 +1,9 @@
-<h2><%= @review.content%> - <%= @review.critic.username%></h2>
+
+
+
+<h2><%= @review.content%> - <%= @review.critic.username%> </h2>
+
+
 
 <% if @review.critic == current_critic %>
   <%= link_to "Edit Review", edit_review_path(@review)%>

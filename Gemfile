@@ -35,6 +35,9 @@ gem 'omniauth-rails_csrf_protection'
 gem 'bootsnap', '>= 1.4.4', require: false
 #gem 'shrine', '~> 3.3'
 #gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem "mini_magick"
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
+
 
 group :development, :test do
   gem 'pry'
