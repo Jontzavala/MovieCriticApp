@@ -17,9 +17,11 @@
     <% else %>
         <%= f.hidden_field :movie_id %>
     <% end %>
+    <br>
+    <br>
     <%= f.label :content %>
-    <%= f.text_field :content %>
-
-
+    <%= f.text_area :content %>
+    <br>
+    <br>
     <%= f.submit %>
 <% end %>

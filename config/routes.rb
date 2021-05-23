@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   end
   resources :reviews
   resources :critics do
-    resources :movies, shallow: true
-    resources :reviews, shallow: true
+    resources :movies
+    resources :reviews
   end
   
 end

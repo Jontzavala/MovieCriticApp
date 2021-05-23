@@ -20,7 +20,8 @@ class MoviesController < ApplicationController
     def create
         @movie = current_critic.movies.build(movie_params)
         if @movie.save
-            redirect_to movies_path
+            flash[:message] = "Your movie was created"
+            redirect_to movie_path(@movie)
         else
             render :new
         end

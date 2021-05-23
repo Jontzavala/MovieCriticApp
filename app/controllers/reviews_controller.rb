@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
    def destroy
         if @review = Review.find_by_id(params[:id])
             @review.destroy
-            redirect_to reviews_path
+            redirect_to movies_path
         else
             flash[:message] = "Couldn't delete review"
             render :edit
