@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
  
    def index
         if params[:critic_id] && @critic = Critic.find_by_id(params[:critic_id])
+            @critic = current_critic
             @reviews = @critic.reviews
         else
             @reviews = Review.all

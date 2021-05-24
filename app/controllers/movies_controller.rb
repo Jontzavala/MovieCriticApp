@@ -9,7 +9,8 @@ class MoviesController < ApplicationController
 
     def index
         if params[:critic_id] && @critic = Critic.find_by_id(params[:critic_id])
-           @movies = @critic.movies.alpha
+            @critic = current_critic
+            @movies = @critic.movies.alpha
         else
           @error = "That Critic doesn't exist" if params[:critic_id]
           @movies = Movie.alpha
@@ -20,7 +21,6 @@ class MoviesController < ApplicationController
     def create
         @movie = current_critic.movies.build(movie_params)
         if @movie.save
-            flash[:message] = "Your movie was created"
             redirect_to movie_path(@movie)
         else
             render :new

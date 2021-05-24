@@ -1,4 +1,4 @@
-<% if @critic %>
+<% if @critic = current_critic %>
     <h1><%= @critic.username %>'s Movies:</h1>
 <% else %>
     <h1>All Movies</h1>
@@ -9,8 +9,6 @@
     <h2>No movies yet. Add a movie <%= link_to "here", new_movie_path%></h2>
 
 <% else %>
-
-
 
 <ul>
     <% @movies.each do |m|%>
