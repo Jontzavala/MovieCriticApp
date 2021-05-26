@@ -2,7 +2,12 @@
     <div class='text-center'>
     <h1>Welcome <%= @critic.username %></h1>
     <div>
-<% else %>
-    <h2>This isn't your profile click on all movies to see others movies and reviews</h2>
 <% end %>
+
+<%= display_movies %>
+
+<h3><%= render partial: "movies/movies", locals: {movies: @critic.movies} %></h3> 
+
+
+
 

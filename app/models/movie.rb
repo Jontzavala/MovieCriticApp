@@ -7,5 +7,5 @@ class Movie < ApplicationRecord
   validates :title, :description, presence: true
   validates_uniqueness_of :title
 
-  scope :alpha, -> {order(:title) }
+  scope :most_reviews, -> {left_joins(:reviews).group('movies.id').order('count(reviews.movie_id) desc')}
 end

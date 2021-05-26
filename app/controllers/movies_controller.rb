@@ -10,10 +10,10 @@ class MoviesController < ApplicationController
     def index
         if params[:critic_id] && @critic = Critic.find_by_id(params[:critic_id])
             @critic = current_critic
-            @movies = @critic.movies.alpha
+            @movies = @critic.movies.most_reviews
         else
           @error = "That Critic doesn't exist" if params[:critic_id]
-          @movies = Movie.alpha
+          @movies = Movie.most_reviews
         end
     
     end
@@ -28,7 +28,6 @@ class MoviesController < ApplicationController
     end
 
     def show
-        #@image_element = @movie.image_elements.build
         
     end
 

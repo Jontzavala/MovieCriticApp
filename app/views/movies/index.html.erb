@@ -1,8 +1,4 @@
-<% if @critic = current_critic %>
-    <h1><%= @critic.username %>'s Movies:</h1>
-<% else %>
-    <h1>All Movies</h1>
-<% end %>
+<h1><%= display_index_header %></h1>
 
 <% if @movies.blank? %>
 
@@ -10,11 +6,8 @@
 
 <% else %>
 
-<ul>
-    <% @movies.each do |m|%>
-      <li><%= link_to m.title, movie_path(m) %></li>
-    <% end %>
-</ul>
+<h2><%= render partial: "movies", locals: {movies: @movies} %></h2>
+
 
 <% end %>
 

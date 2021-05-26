@@ -21,7 +21,6 @@ class CriticsController < ApplicationController
     def show
         redirect_if_not_logged_in
         @critic = Critic.find_by_id(params[:id])
-        redirect_to '/' if !@critic
     end
 
     private

@@ -1,0 +1,5 @@
+<ul>
+    <% movies.each do |m|%>
+      <li><%= link_to m.title, movie_path(m) %> - <%= m.reviews.count %></li>
+    <% end %>
+</ul>

@@ -15,7 +15,6 @@
 <p><%= link_to 'Add a new review', new_movie_review_path(@movie)%></p>
 
 <% if !@movie.reviews.empty? %>
-  <p><%= link_to 'See all reviews', movie_reviews_path(@movie)%></p>
   <h4>Most Recent Reviews:</h4>
   <% @movie.reviews.order(updated_at: :desc).limit(3).each do |r|%>
     <li>
@@ -23,3 +22,4 @@
     </li>
   <% end %>
 <% end %>
+
